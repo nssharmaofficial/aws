@@ -12,17 +12,17 @@ When you add an image file to your `original` folder in bucket, Amazon S3 invoke
 
 ## What will be the steps? 🪜
 
-1. Set up AWS CLI
-2. Setup Terraform
-3. Setup project
-    1. Configure provider
-    2. Create S3 bucket
-    3. Create IAM role with S3 permissions
-    4. Create Lambda function
-    5. Define outputs
-4. Deploy changes
-5. Test it out
-6. Clean up
+1. [Set up AWS CLI](#set-up-aws-cli-)
+2. [Setup Terraform](#set-up-terraform-️)
+3. [Setup project](#set-up-project-)
+    1. [Configure provider](#configure-provider-)
+    2. [Create S3 bucket](#create-s3-bucket-and-input-example-)
+    3. [Create IAM role with S3 permissions](#create-iam-role-with-s3-permissions-️)
+    4. [Create Lambda function](#create-lambda-function-)
+    5. [Define outputs](#define-outputs-optional-)
+4. [Deploy changes](#deploy-changes)
+5. [Test it out](#test-it-out-)
+6. [Clean up](#clean-up-)
 
 ## Set up AWS CLI 💻
 
