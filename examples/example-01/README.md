@@ -52,7 +52,7 @@ After creating the two folders, run `terraform init` inside the `terraform` fold
 
 Define the AWS provider and specify the region.
 
-```json
+```terraform
 // provider.tf
 
 provider "aws" {
@@ -64,7 +64,7 @@ provider "aws" {
 
 First create an Amazon S3 bucket with two folders in it. The first folder is the source folder `original` in which you will upload your images to. The second folder `resized` will be used by Lambda to save the resized thumbnail when you invoke your function.
 
-```json
+```terraform
 // s3.tf
 
 // Create the S3 bucket
@@ -102,7 +102,7 @@ Do not forget to replace `<YOUR-EXAMPLE.PNG>` and `<YOUR-BUCKET-NAME>` by the ac
 
 The first step in creating your Lambda function is to create a permissions policy. This policy gives your function the permissions it needs to access other AWS resources. For this tutorial, the policy gives Lambda read and write permissions for Amazon S3 buckets and allows it to write to Amazon CloudWatch Logs.
 
-```json
+```terraform
 // iam.tf
 
 // Define the IAM policy with necessary permissions for the Lambda function
@@ -144,7 +144,7 @@ resource "aws_iam_policy" "lambda_policy" {
 
 An execution role is an IAM role that grants a Lambda function permission to access AWS services and resources. To give your function read and write access to an Amazon S3 bucket, you attach the permissions policy you created in the previous step.
 
-```json
+```terraform
 // iam.tf
 
 // Define the IAM role that the Lambda function will assume
@@ -253,7 +253,7 @@ Use a code source from the `.zip` file that you just created. Name your Lambda f
 
 Runtime is the language that your Lambda function is written in. Previously, in the package we were installing Python 3.12, so we will use this one only.
 
-```json
+```terraform
 // lambda.tf
 
 // Define the Lambda function to resize images
@@ -270,7 +270,7 @@ resource "aws_lambda_function" "ResizeImage" {
 
 Next, we need to configure the trigger source. We're going to select S3 for our trigger.
 
-```json
+```terraform
 // lambda.tf
 
 // Allow S3 to invoke the Lambda function
@@ -289,7 +289,7 @@ As the event type I want to select only a PUT.
 
 Then we can provide a prefix (specific location inside of the bucket) - in this case the folder `original` inside the bucket.
 
-```json
+```terraform
 // lambda.tf
 
 // Configure S3 bucket notification to trigger Lambda function
@@ -315,7 +315,7 @@ The outputs in Terraform provide useful information about the resources created 
 
 This output returns the name of the S3 bucket that was created and the Lambda function ARN:
 
-```json
+```terraform
 // outputs.tf
 
 // Output the name of the S3 bucket
